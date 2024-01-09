@@ -4,7 +4,7 @@
 
 def canUnlockAll(boxes):
     """Check if it's possible to unlock all boxes in a given list of boxes"""
-    opened = [0]
+    opened = []
     open_sesame(boxes, boxes[0], 0, opened)
     if len(boxes) == len(opened):
         return True
@@ -16,5 +16,5 @@ def open_sesame(boxes, box, idx, opened):
     if idx not in opened:
         opened.append(idx)
     for key in box:
-        if key not in opened:
+        if key not in opened and key < len(boxes):
             open_sesame(boxes, boxes[key], key, opened)
