@@ -13,7 +13,8 @@ def print_all():
     """function to print all"""
     print("File size:", total_file_size)
     for key, value in status_dict.items():
-        print("{}: {}".format(key, value))
+        if value:
+            print("{}: {}".format(key, value))
 
 
 try:
