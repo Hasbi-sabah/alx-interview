@@ -24,7 +24,7 @@ try:
             line = line.split(" ")
             status_code = int(line[7])
             file_size = int(line[8])
-        except Exception:
+        except (IndexError, TypeError):
             continue
         status_dict[status_code] += 1
         total_file_size += file_size
