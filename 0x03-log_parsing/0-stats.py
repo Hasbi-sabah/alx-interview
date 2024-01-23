@@ -31,5 +31,6 @@ try:
         if count == 10:
             print_all()
             count = 0
+    print_all()
 except KeyboardInterrupt:
     print_all()
