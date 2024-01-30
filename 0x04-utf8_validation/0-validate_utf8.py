@@ -6,10 +6,6 @@ from typing import List
 
 def validUTF8(data: List[int]) -> bool:
     """Returns True if a given data set represents a valid UTF-8 encoding."""
-    if len(data) == 1:
-        if data[0] <= 128:
-            return True
-        return bin(data[0])[2:].zfill(8).startswith("0")
     count = 0
     for s in data:
         binny = bin(s)[2:].zfill(8)
@@ -28,4 +24,4 @@ def validUTF8(data: List[int]) -> bool:
             count -= 1
             continue
         return False
-    return True
+    return count == 0
