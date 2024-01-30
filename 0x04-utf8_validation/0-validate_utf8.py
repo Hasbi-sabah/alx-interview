@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """module for the function validUTF8"""
 
+from typing import List
 
-def validUTF8(data):
-    """A method that determines if a given data set represents a valid UTF-8 encoding."""
+
+def validUTF8(data: List[int]) -> bool:
+    """Returns True if a given data set represents a valid UTF-8 encoding."""
     if len(data) == 1:
         if data[0] <= 128:
             return True
