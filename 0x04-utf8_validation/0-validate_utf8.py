@@ -8,7 +8,7 @@ def validUTF8(data: List[int]) -> bool:
     """Returns True if a given data set represents a valid UTF-8 encoding."""
     count = 0
     for s in data:
-        binny = bin(s)[2:].zfill(8)
+        binny = bin(s)[2:].zfill(8)[-8:]
         if binny.startswith("0") and count == 0:
             continue
         if binny.startswith("110") and count == 0:
