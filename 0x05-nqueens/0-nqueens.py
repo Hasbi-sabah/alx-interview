@@ -28,6 +28,7 @@ for i in range(N):
     board.append(row)
 queens = []
 
+
 def available_spots(queens, board):
     """Check and mark available spots on a chessboard."""
     for i, row in enumerate(board):
@@ -35,14 +36,15 @@ def available_spots(queens, board):
             for x, y in queens:
                 if i == x or j == y or abs(i - x) == abs(j - y):
                     board[i][j] = 1
-                    
+
+
 def queen_down(N, queens, board, final_combo):
     """
     Place queens on a chessboard of size N,
     exploring all combinations and returning unique solutions.
     """
     if len(queens) == N:
-        sorted_queens = sorted(queens, key=lambda x: x[0]) 
+        sorted_queens = sorted(queens, key=lambda x: x[0])
         if sorted_queens not in final_combo:
             final_combo.append(queens)
         return final_combo
@@ -53,6 +55,7 @@ def queen_down(N, queens, board, final_combo):
                 board_cpy = [r[:] for r in board]
                 queen_down(N, queens + [[i, j]], board_cpy, final_combo)
     return final_combo
+
 
 queens = queen_down(N, queens, board, [])
 for queen in queens:
