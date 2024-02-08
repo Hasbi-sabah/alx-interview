@@ -7,28 +7,15 @@ on an NxN chessboard. Write a program that solves the N queens problem.
 import sys
 
 
-def is_available(queens, i, j):
-    """checks if a spot is available"""
-    for x, y in queens:
-        if i == x or j == y or abs(i - x) == abs(j - y):
-            return False
-    return True
-
-
-def queen_down(N, queens, final_combo):
+def queen_down(N, i, queens, final_combo, col, pos, neg):
     """recursive function to put down non attacking queens"""
     if len(queens) == N:
-        sorted_queens = sorted(queens, key=lambda x: x[0])
-        if sorted_queens not in final_combo:
-            final_combo.append(sorted_queens)
+        final_combo.append(queens)
         return final_combo
-    for i in range(N):
-        if any(i == x[0] for x in queens):
-            continue
-        for j in range(N):
-            if is_available(queens, i, j):
-                queen_down(N, queens + [[i, j]], final_combo)
-                break
+    for j in range(N):
+        if not (j in col or i + j in pos or i - j in neg):
+            queen_down(N, i + 1, queens + [[i, j]], final_combo,
+                       col + [j], pos + [i + j], neg + [i - j])
     return final_combo
 
 
@@ -46,6 +33,7 @@ if N < 4:
     print("N must be at least 4")
     sys.exit(1)
 queens = []
-queen_down(N, [], queens)
+col = pos = neg = []
+queen_down(N, 0, [], queens, col, pos, neg)
 for queen in queens:
     print(queen)
