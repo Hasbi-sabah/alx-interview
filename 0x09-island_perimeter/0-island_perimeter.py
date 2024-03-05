@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 """module for the function island_perimeter"""
-from collections import deque
 
 
 def island_perimeter(grid):
     """finds perimiter of island"""
     m = len(grid)
     n = len(grid[0])
-    q = deque()
+    q = []
     perimiter = 0
 
     for i in range(m):
@@ -17,7 +16,7 @@ def island_perimeter(grid):
                 perimiter += 4
 
     while q:
-        x, y = q.pop()
+        x, y = q.pop(0)
         neighbors = get_valid_neighbors(grid, x, y, m, n)
         perimiter -= len(neighbors)
     return perimiter
