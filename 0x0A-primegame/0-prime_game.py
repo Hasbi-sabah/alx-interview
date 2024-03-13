@@ -33,8 +33,8 @@ def isWinner(x, nums):
     maria = 0
     if x <= 0 or not nums:
         return None
-    for num in nums:
-        num_arr = [n for n in range(1, num + 1)]
+    for num in range(x):
+        num_arr = [n for n in range(1, nums[num] + 1)]
         if countPrime(num_arr) % 2 == 0:
             ben += 1
         else:
