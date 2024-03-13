@@ -31,6 +31,8 @@ def isWinner(x, nums):
     """Determine the winner based on prime number count."""
     ben = 0
     maria = 0
+    if x <= 0 or not nums:
+        return None
     for num in nums:
         num_arr = [n for n in range(1, num + 1)]
         if countPrime(num_arr) % 2 == 0:
